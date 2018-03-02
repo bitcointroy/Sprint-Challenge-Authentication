@@ -28,7 +28,9 @@ const encryptUserPW = (req, res, next) => {
 	// Once the user is set, call next and head back into the userController to save it to the DB
 	req.body.passwordHash = bcrypt.hash(password, SaltRounds);
 	const passwordHash = req.body.passwordHash;
+	console.log('hashed:', passwordHash);
 	req.user = { username, password, passwordHash };
+	console.log('sending', req.user);
 	next();
 };
 
